@@ -1,6 +1,6 @@
 # Aspect Skills
 
-**:contentReference[oaicite:0]{index=0}** is a professional training and placement-oriented institute focused on building industry-ready skills for students and working professionals.  
+**Aspect Skills website** is a professional training and placement-oriented institute focused on building industry-ready skills for students and working professionals.  
 This repository contains the source code for the official **Aspect Skills website**, designed with a modern, responsive, and corporate-friendly UI.
 
 ---
