@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aspect Skills</title>
+
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+   <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- Top Blue Bar -->
+  <div class="top-bar d-flex justify-content-between align-items-center px-3 py-2 bg-primary text-white">
+    <div class="top-bar-left d-flex gap-3 align-items-center">
+      <span><i class="fas fa-phone"></i> +91 84466 67608</span>
+
+      <a href="mailto:info@aspectskills.com " class="text-white" aria-label="Email"><i class="fas fa-envelope"></i>info@aspectskills.com</a>
+    </div>
+    <!-- Enquiry Button -->
+    <div class="text-center">
+      <button class="btn btn-warning px-4 py-2 rounded-pill" data-bs-toggle="modal" data-bs-target="#enquiryModal">
+        Enquire Now
+      </button>
+    </div>
+  </div>
+
+<!-- Enquiry Modal -->
+<div class="modal fade" id="enquiryModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 bg-transparent">
+      <div class="circle-modal-content">
+
+        <button type="button"
+                class="circle-modal-close"
+                data-bs-dismiss="modal">&times;</button>
+
+        <h4 class="mb-4 fw-bold">Enquire Now</h4>
+
+        <!-- FORM -->
+        <form id="enquiryForm"
+              action="https://formsubmit.co/ajax/info@aspectskills.com"
+              method="POST">
+
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+
+          <input type="text" name="name" placeholder="*Name" required>
+          <input type="tel" name="phone" placeholder="*Phone" required>
+          <input type="email" name="email" placeholder="*Email" required>
+          <input type="text" name="interest" placeholder="*Interested In" required>
+
+          <button type="submit" class="submit-btn mt-2">Submit</button>
+        </form>
+
+        <!-- SUCCESS MESSAGE (INSIDE MODAL) -->
+        <div id="successBox" class="text-center d-none mt-3">
+          <div class="success-circle mb-3">✓</div>
+          <h5 class="fw-bold">Enquiry Submitted Successfully!</h5>
+          <p class="text-muted small">Our team will contact you shortly.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- FormSubmit logic -->
+<script>
+document.getElementById("enquiryForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  fetch(this.action, {
+    method: "POST",
+    body: new FormData(this)
+  })
+  .then(() => {
+
+    // Hide form
+    this.classList.add("d-none");
+
+    // Show success message INSIDE modal
+    document.getElementById("successBox").classList.remove("d-none");
+
+    // Optional: auto close after 3 sec
+    setTimeout(() => {
+      const modal = bootstrap.Modal.getInstance(document.getElementById("enquiryModal"));
+      modal.hide();
+
+      // Reset for next open
+      this.reset();
+      this.classList.remove("d-none");
+      document.getElementById("successBox").classList.add("d-none");
+
+    }, 3000);
+  })
+  .catch(() => alert("Something went wrong. Please try again."));
+});
+</script>
+
+  
+  
+  <!-- Main Header -->
+ <header class="main-header py-3 border-bottom bg-white">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="logo" style="display: flex; align-items: center; height: 140px; padding-left: 30px;">
+        <a href="index.html" style="display: inline-block;">
+          <img src="assets/img/as3r.png" alt="aspect skills Logo"
+            style="max-height: 130px; width: auto; object-fit: contain; display: block;" />
+        </a>
+      </div>
+      <nav class="main-nav">
+        <ul class="nav">
+          <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle fw-semibold" href="#" id="coursesDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Courses
+            </a>
+
+            <div class="dropdown-menu mega-dropdown shadow-lg border-0 p-4 mt-2 animate__animated animate__fadeIn"
+              aria-labelledby="coursesDropdown">
+              <div class="container-fluid">
+                <div class="row g-4">
+
+                  <!-- Column 1 -->
+                  <div class="col-md-4">
+                    <h6 class="mega-title">100% Job Assurance</h6>
+                    <a class="mega-link" href="/xpro.html">xPro - Full Stack Dev with AI</a>
+                    <a class="mega-link" href="/testpro.html">testPro - Automation Testing</a>
+
+                    <h6 class="mega-title mt-4">Master Diploma (6 Months)</h6>
+                    <a class="mega-link" href="/javafullstack.html">Java Full Stack</a>
+                    <a class="mega-link" href="/dotnet.html">.Net Full Stack</a>
+                    <a class="mega-link" href="/softwaretesting.html">Software Testing</a>
+                    <a class="mega-link" href="/pdac.html">P-DAC</a>
+                  </div>
+
+                  <!-- Column 2 -->
+                  <div class="col-md-4">
+                    <h6 class="mega-title">Advanced Diploma (4 Months)</h6>
+                    <a class="mega-link" href="/pythonfullstack.html">Python Full Stack</a>
+                    <a class="mega-link" href="/javafullstack.html">Java Full Stack</a>
+                    <a class="mega-link" href="/dotnet.html">Dot Net Full Stack</a>
+
+                    <h6 class="mega-title mt-4">Diploma (2 Months)</h6>
+                    <a class="mega-link" href="/uiuxdesign.html">UI/UX Design</a>
+                    <a class="mega-link" href="/datascience.html">Data Science</a>
+                    <a class="mega-link" href="/php.html">PHP</a>
+                    <a class="mega-link" href="/salesforce.html">Salesforce</a>
+                  </div>
+
+                  <!-- Column 3 -->
+                  <div class="col-md-4">
+                    <h6 class="mega-title">Short Term Courses</h6>
+                    <a class="mega-link" href="/cc.html">C / C++</a>
+                    <a class="mega-link" href="/corejava.html">Core Java</a>
+                    <a class="mega-link" href="/htmlcssbootstrap.html">HTML / CSS / Bootstrap</a>
+                    <a class="mega-link" href="/angularreact.html">Angular / React</a>
+                    <a class="mega-link" href="/aws.html">AWS / DevOps</a>
+                    <a class="mega-link" href="/powerbi.html">Power BI</a>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="/service.html">Services</a></li>
+          <li class="nav-item dropdown position-relative">
+            <a class="nav-link dropdown-toggle fw-semibold" href="#" id="placementsDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Placements
+            </a>
+            <ul class="dropdown-menu placements-dropdown shadow border-0 mt-2 animate__animated animate__fadeIn"
+              aria-labelledby="placementsDropdown">
+              <li><a class="dropdown-item" href="/overview.html">Overview</a></li>
+              <!-- <li><a class="dropdown-item" href="#">Placed Students</a></li> -->
+              <li><a class="dropdown-item" href="/fec.html">Fresher Employment Center</a></li>
+              <li><a class="dropdown-item" href="/our-clients.html">Our Clients</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="/about.html">About Us</a></li>
+          <!-- <li class="nav-item"><a class="nav-link" href="#">Testimonials</a></li> -->
+          <li class="nav-item"><a class="nav-link" href="/contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!-- img -->
+  <section id="home" class="hero-section">
+    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+      <div class="carousel-inner">
+
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+          <img src="assets/img/img1.png" class="d-block w-100 hero-image" alt="Slide 1">
+          <div class="carousel-caption d-none d-md-block carousel-overlay animate__animated animate__fadeInUp">
+            <h1>Empowering Careers</h1>
+            <p>Your journey to success begins here</p>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item">
+          <img src="assets/img/ing2.png" class="d-block w-100 hero-image" alt="Slide 2">
+          <div class="carousel-caption d-none d-md-block carousel-overlay animate__animated animate__fadeInUp">
+            <h1>Aspect Skills</h1>
+            <p>Where learning meets opportunities</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Controls -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+  </section>
+  <!-- Best IT Job Oriented Courses -->
+  <div class="container">
+    <div class="section-title">🎓Best IT Job Oriented Courses</div>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+
+      <!-- Example Course Card -->
+      <div class="col">
+        <a href="/xpro.html" class="text-decoration-none">
+          <div class="course-card text-center">
+            <img src="assets/img/img3.png" alt="xPro - Full Stack Development with AI" class="img-fluid">
+            <div class="course-title">xPro - Full Stack Development with AI</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Repeat for others -->
+      <div class="col">
+        <a href="/testpro.html" class="text-decoration-none">
+          <div class="course-card text-center">
+            <img src="assets/img/img4.png" alt="TestPro - Automation Testing with AI" class="img-fluid">
+            <div class="course-title">TestPro - Automation Testing with AI</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/javafullstack" class="text-decoration-none">
+          <div class="course-card text-center">
+            <img src="assets/img/java.png" alt="Full Stack Java Development" class="img-fluid">
+            <div class="course-title">Full Stack Java Development</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/dotnet.html" class="text-decoration-none">
+          <div class="course-card text-center">
+            <img src="assets/img/net.png" alt=".NET Development" class="img-fluid">
+            <div class="course-title">Full Stack .NET Development</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/pdac.html" class="text-decoration-none">
+          <div class="course-card text-center">
+            <img src="assets/img/dac.png" alt="P-DAC" class="img-fluid">
+            <div class="course-title">P-DAC with Stipend</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/pythonfullstack.html" class="text-decoration-none">
+          <div class="course-card text-center">
+            <img src="assets/img/python.png" alt="Python Full Stack" class="img-fluid">
+            <div class="course-title">Full Stack Python Development</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/htmlcssbootstrap.html" class="text-decoration-none">
+          <div class="course-card text-center">
+            <img src="assets/img/html.jpg" alt="Html,CSS,Bootstrap" class="img-fluid">
+            <div class="course-title">Html,CSS,Bootstrap</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/softwaretesting.html" class="text-decoration-none">
+          <div class="course-card text-center">
+            <img src="assets/img/testing.png" alt="Software Testing" class="img-fluid">
+            <div class="course-title">Software Testing</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/datascience.html" class="text-decoration-none">
+          <div class="course-card text-center">
+            <img src="assets/img/data.png" alt="Data Science" class="img-fluid">
+            <div class="course-title">Data Science</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/dataanalytics.html" class="text-decoration-none">
+          <div class="course-card text-center">
+            <img src="assets/img/data-analytics.png" alt="Data Analytics" class="img-fluid">
+            <div class="course-title">Data Analytics</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/salesforce.html" class="text-decoration-none">
+          <div class="course-card text-center">
+            <img src="assets/img/salesforce.png" alt="Salesforce" class="img-fluid">
+            <div class="course-title">Salesforce</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/digitalmarketing.html" class="text-decoration-none">
+          <div class="course-card text-center">
+            <img src="assets/img/ddm.png" alt="Digital Marketing" class="img-fluid">
+            <div class="course-title">Diploma in Digital Marketing</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/mean.html" class="text-decoration-none">
+          <div class="course-card text-center">
+            <img src="assets/img/mean.png" alt="MEAN & MERN" class="img-fluid">
+            <div class="course-title">MEAN & MERN</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/powerbi.html" class="text-decoration-none">
+          <div class="course-card text-center">
+            <img src="assets/img/powerbi.png" alt="Power Bi" class="img-fluid">
+            <div class="course-title">Power Bi</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/aws.html" class="text-decoration-none">
+          <div class="course-card text-center">
+            <img src="assets/img/aws.png" alt="AWS" class="img-fluid">
+            <div class="course-title">AWS</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/cc.html" class="text-decoration-none">
+          <div class="course-card text-center">
+            <img src="assets/img/C.png" alt="C/C++" class="img-fluid">
+            <div class="course-title">C/C++</div>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!--  -->
+  <section class="why-choose-section">
+    <div class="container">
+      <h2 class="why-title">Why choose Aspect Skills?</h2>
+      <div class="row g-4">
+
+        <!-- Card 1 -->
+        <div class="col-md-4">
+          <div class="feature-card">
+            <div class="feature-emoji">💻</div>
+            <div class="feature-title">Project Based Learning</div>
+            <div class="feature-text">
+              Open-ended challenges that promote research, analysis, and solution development — boosting critical
+              thinking and IT problem-solving skills.
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="col-md-4">
+          <div class="feature-card">
+            <div class="feature-emoji">👩‍💻</div>
+            <div class="feature-title">Internship & Project Guidance</div>
+            <div class="feature-text">
+              Students receive expert feedback on tasks to refine their understanding of real-world IT concepts and
+              improve learning outcomes.
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="col-md-4">
+          <div class="feature-card">
+            <div class="feature-emoji">🧑‍💼</div>
+            <div class="feature-title">Employability Skills Training</div>
+            <div class="feature-text">
+              Combines technical training with soft skills to prepare students for the modern IT workplace and increase
+              job readiness.
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="col-md-4">
+          <div class="feature-card">
+            <div class="feature-emoji">👩‍🏫</div>
+            <div class="feature-title">Proficient Facilitators</div>
+            <div class="feature-text">
+              Expert trainers guide students with industry experience, offering tailored support to help them reach
+              academic and career goals.
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="col-md-4">
+          <div class="feature-card">
+            <div class="feature-emoji">🧑‍💻</div>
+            <div class="feature-title">Curriculum by IT Experts</div>
+            <div class="feature-text">
+              Designed by professionals, the curriculum delivers current, industry-relevant content to ensure
+              career-ready learning.
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="col-md-4">
+          <div class="feature-card">
+            <div class="feature-emoji">🎯</div>
+            <div class="feature-title">100% Placement Assistance</div>
+            <div class="feature-text">
+              From resume building to interviews, the dedicated team ensures students receive maximum job opportunities
+              and successful placements.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Clients -->
+  <section id="clients" class="clients-section section">
+    <div class="container text-center" data-aos="fade-up">
+      <h1 class="section-heading">🌟 Our Clients</h1>
+      <p class="story-title">Trusted by industry leaders to drive innovation and excellence 💼✨</p>
+    </div>
+
+    <div class="client-slider-wrapper" data-aos="fade-up" data-aos-delay="200">
+      <div class="client-slider">
+        <div class="client-logo"><img src="../assets/img/infosys.png" alt="Infosys" /></div>
+        <div class="client-logo"><img src="../assets/img/microsoft.png" alt="Microsoft" /></div>
+        <div class="client-logo"><img src="../assets/img/cap.png" alt="Capgemini" /></div>
+        <div class="client-logo"><img src="../assets/img/ibm.png" alt="IBM" /></div>
+        <div class="client-logo"><img src="../assets/img/dxc.png" alt="DXC Technology" /></div>
+        <div class="client-logo"><img src="../assets/img/oracle.png" alt="Oracle" /></div>
+        <div class="client-logo"><img src="../assets/img/sap.png" alt="SAP" /></div>
+        <div class="client-logo"><img src="../assets/img/cognizant.png" alt="Cognizant" /></div>
+        <div class="client-logo"><img src="../assets/img/tcss.png" alt="tcs" /></div>
+        <div class="client-logo"><img src="../assets/img/wipro1.png" alt="wipro" /></div>
+
+
+
+        <!-- Repeat logos for infinite loop -->
+        <div class="client-logo"><img src="../assets/img/infosys.png" alt="Infosys" /></div>
+        <div class="client-logo"><img src="../assets/img/microsoft.png" alt="Microsoft" /></div>
+        <div class="client-logo"><img src="../assets/img/cap.png" alt="Capgemini" /></div>
+        <div class="client-logo"><img src="../assets/img/ibm.png" alt="IBM" /></div>
+        <div class="client-logo"><img src="../assets/img/dxc.png" alt="DXC Technology" /></div>
+        <div class="client-logo"><img src="../assets/img/wipro1.png" alt="wipro" /></div>
+
+      </div>
+    </div>
+  </section>
+ <!-- Footer -->
+<footer class="footer-section">
+  <div class="container">
+    <div class="row gy-4">
+
+      <!-- Contact Us -->
+      <div class="col-lg-3 col-md-6">
+        <h5 class="footer-title">CONTACT US</h5>
+        <div class="footer-line"></div>
+        <p><strong>Phone:</strong> +91 84466 67608</p>
+        <p><strong>Email:</strong> info@aspectskills.com</p>
+      </div>
+
+      <!-- Useful Links -->
+      <div class="col-lg-3 col-md-6">
+        <h5 class="footer-title">USEFUL LINKS</h5>
+        <div class="footer-line"></div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="alliances.html">Alliances</a></li>
+          <li><a href="service.html">Services</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="disclaimer.html">Disclaimer Policy</a></li>
+        </ul>
+      </div>
+
+      <!-- Our Services -->
+      <div class="col-lg-3 col-md-6">
+        <h5 class="footer-title">OUR SERVICES</h5>
+        <div class="footer-line"></div>
+        <ul class="footer-links">
+          <li><a href="service.html">College Training</a></li>
+          <li><a href="service.html">Corporates</a></li>
+          <li><a href="service.html">Consulting</a></li>
+          <li><a href="service.html">Staffing</a></li>
+          <li><a href="service.html">Testing</a></li>
+          <li><a href="service.html">Career Counseling</a></li>
+        </ul>
+      </div>
+
+      <!-- About -->
+      <div class="col-lg-3 col-md-6">
+        <h5 class="footer-title">ABOUT Aspect Skills</h5>
+        <div class="footer-line"></div>
+        <p>
+         The major operations of the company are held in Pune. We believe in providing high quality, cost effective solutions in clients PAN INDIA.
+        </p>
+
+        <!-- LinkedIn Icon -->
+        <a href="https://www.linkedin.com/company/aspect-skills/" class="linkedin-icon">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Bottom Line -->
+    <div class="footer-bottom">
+      <p>© 2024-Aspect Skills. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XPro|Aspect Skills</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+   <link rel="stylesheet" href="xpro.css" />
+</head>
+
+<body>
+
+  <!-- Top Blue Bar -->
+  <div class="top-bar d-flex justify-content-between align-items-center px-3 py-2 bg-primary text-white">
+    <div class="top-bar-left d-flex gap-3 align-items-center">
+      <span><i class="fas fa-phone"></i> +91 84466 67608</span>
+
+      <a href="mailto:info@aspectskills.com " class="text-white" aria-label="Email"><i class="fas fa-envelope"></i> info@aspectskills.com</a>
+    </div>
+    <!-- Enquiry Button -->
+    <div class="text-center">
+      <button class="btn btn-warning px-4 py-2 rounded-pill" data-bs-toggle="modal" data-bs-target="#enquiryModal">
+        Enquire Now
+      </button>
+    </div>
+  </div>
+
+<!-- Enquiry Modal -->
+<div class="modal fade" id="enquiryModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 bg-transparent">
+      <div class="circle-modal-content">
+
+        <button type="button"
+                class="circle-modal-close"
+                data-bs-dismiss="modal">&times;</button>
+
+        <h4 class="mb-4 fw-bold">Enquire Now</h4>
+
+        <!-- FORM -->
+        <form id="enquiryForm"
+              action="https://formsubmit.co/ajax/info@aspectskills.com"
+              method="POST">
+
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+
+          <input type="text" name="name" placeholder="*Name" required>
+          <input type="tel" name="phone" placeholder="*Phone" required>
+          <input type="email" name="email" placeholder="*Email" required>
+          <input type="text" name="interest" placeholder="*Interested In" required>
+
+          <button type="submit" class="submit-btn mt-2">Submit</button>
+        </form>
+
+        <!-- SUCCESS MESSAGE (INSIDE MODAL) -->
+        <div id="successBox" class="text-center d-none mt-3">
+          <div class="success-circle mb-3">✓</div>
+          <h5 class="fw-bold">Enquiry Submitted Successfully!</h5>
+          <p class="text-muted small">Our team will contact you shortly.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- FormSubmit logic -->
+<script>
+document.getElementById("enquiryForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  fetch(this.action, {
+    method: "POST",
+    body: new FormData(this)
+  })
+  .then(() => {
+
+    // Hide form
+    this.classList.add("d-none");
+
+    // Show success message INSIDE modal
+    document.getElementById("successBox").classList.remove("d-none");
+
+    // Optional: auto close after 3 sec
+    setTimeout(() => {
+      const modal = bootstrap.Modal.getInstance(document.getElementById("enquiryModal"));
+      modal.hide();
+
+      // Reset for next open
+      this.reset();
+      this.classList.remove("d-none");
+      document.getElementById("successBox").classList.add("d-none");
+
+    }, 3000);
+  })
+  .catch(() => alert("Something went wrong. Please try again."));
+});
+</script>
+
+  
+  <!-- Main Header -->
+ <header class="main-header py-3 border-bottom bg-white">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="logo" style="display: flex; align-items: center; height: 140px; padding-left: 30px;">
+        <a href="index.html" style="display: inline-block;">
+          <img src="assets/img/as3r.png" alt="aspect skills Logo"
+            style="max-height: 130px; width: auto; object-fit: contain; display: block;" />
+        </a>
+      </div>
+      <nav class="main-nav">
+        <ul class="nav">
+          <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle fw-semibold" href="#" id="coursesDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Courses
+            </a>
+
+            <div class="dropdown-menu mega-dropdown shadow-lg border-0 p-4 mt-2 animate__animated animate__fadeIn"
+              aria-labelledby="coursesDropdown">
+              <div class="container-fluid">
+                <div class="row g-4">
+
+                  <!-- Column 1 -->
+                  <div class="col-md-4">
+                    <h6 class="mega-title">100% Job Assurance</h6>
+                    <a class="mega-link" href="/xpro.html">xPro - Full Stack Dev with AI</a>
+                    <a class="mega-link" href="/testpro.html">testPro - Automation Testing</a>
+
+                    <h6 class="mega-title mt-4">Master Diploma (6 Months)</h6>
+                    <a class="mega-link" href="/javafullstack.html">Java Full Stack</a>
+                    <a class="mega-link" href="/dotnet.html">.Net Full Stack</a>
+                    <a class="mega-link" href="/softwaretesting.html">Software Testing</a>
+                    <a class="mega-link" href="/pdac.html">P-DAC</a>
+                  </div>
+
+                  <!-- Column 2 -->
+                  <div class="col-md-4">
+                    <h6 class="mega-title">Advanced Diploma (4 Months)</h6>
+                    <a class="mega-link" href="/pythonfullstack.html">Python Full Stack</a>
+                    <a class="mega-link" href="/javafullstack.html">Java Full Stack</a>
+                    <a class="mega-link" href="/dotnet.html">Dot Net Full Stack</a>
+
+                    <h6 class="mega-title mt-4">Diploma (2 Months)</h6>
+                    <a class="mega-link" href="/uiuxdesign.html">UI/UX Design</a>
+                    <a class="mega-link" href="/datascience.html">Data Science</a>
+                    <a class="mega-link" href="/php.html">PHP</a>
+                    <a class="mega-link" href="/salesforce.html">Salesforce</a>
+                  </div>
+
+                  <!-- Column 3 -->
+                  <div class="col-md-4">
+                    <h6 class="mega-title">Short Term Courses</h6>
+                    <a class="mega-link" href="/cc.html">C / C++</a>
+                    <a class="mega-link" href="/corejava.html">Core Java</a>
+                    <a class="mega-link" href="/htmlcssbootstrap.html">HTML / CSS / Bootstrap</a>
+                    <a class="mega-link" href="/angularreact.html">Angular / React</a>
+                    <a class="mega-link" href="/aws.html">AWS / DevOps</a>
+                    <a class="mega-link" href="/powerbi.html">Power BI</a>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="/service.html">Services</a></li>
+          <li class="nav-item dropdown position-relative">
+            <a class="nav-link dropdown-toggle fw-semibold" href="#" id="placementsDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Placements
+            </a>
+            <ul class="dropdown-menu placements-dropdown shadow border-0 mt-2 animate__animated animate__fadeIn"
+              aria-labelledby="placementsDropdown">
+              <li><a class="dropdown-item" href="/overview.html">Overview</a></li>
+              <!-- <li><a class="dropdown-item" href="#">Placed Students</a></li> -->
+              <li><a class="dropdown-item" href="/fec.html">Fresher Employment Center</a></li>
+              <li><a class="dropdown-item" href="/our-clients.html">Our Clients</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="/about.html">About Us</a></li>
+          <!-- <li class="nav-item"><a class="nav-link" href="#">Testimonials</a></li> -->
+          <li class="nav-item"><a class="nav-link" href="/contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+ <!-- xPro Full Stack Development with AI -->
+  <section class="container py-5">
+    <h2 class="text-center fw-bold mb-2">
+      xPro - Full Stack Development with AI
+    </h2>
+    <p class="text-center text-danger fw-bold mb-5">
+      (100% Job Assured Program with Offer Letter on Day 1)
+    </p>
+
+    <!-- Eligibility & Duration -->
+    <div class="row justify-content-center mb-4">
+      <div class="col-md-10">
+        <ul class="list-unstyled px-3 py-4 rounded glass-box">
+          <li><strong>Eligibility:</strong> BE | BTech | MCA | MCS | MCM | MSc | BCA | BCS | BSc etc</li>
+          <li>Passout Year: 2022 / 2023 / 2024 / 2025</li>
+          <li>Aggregate: 55% in 10th, 12th, Degree, PG</li>
+          <li><strong>Duration:</strong> 6 Months Full Time</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Course Modules as Accordion -->
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="accordion glass-box" id="courseAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading1">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
+                Programming Fundamentals
+              </button>
+            </h2>
+            <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#courseAccordion">
+              <div class="accordion-body">
+                Core programming concepts, algorithms, logic building.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading2">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapse2">
+                Responsive Web Design
+              </button>
+            </h2>
+            <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#courseAccordion">
+              <div class="accordion-body">
+                HTML5, CSS3, Bootstrap, Flexbox, Grid.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading3">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapse3">
+                Client Side JS
+              </button>
+            </h2>
+            <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#courseAccordion">
+              <div class="accordion-body">
+                JavaScript, DOM, Events, AJAX, React Basics.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading4">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapse4">
+                Server Side JS
+              </button>
+            </h2>
+            <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#courseAccordion">
+              <div class="accordion-body">
+                Node.js, Express.js, API development.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading5">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapse5">
+                Java Technologies
+              </button>
+            </h2>
+            <div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#courseAccordion">
+              <div class="accordion-body">
+                Core Java, JDBC, Servlets, JSP.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading6">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapse6">
+                .NET Technologies
+              </button>
+            </h2>
+            <div id="collapse6" class="accordion-collapse collapse" data-bs-parent="#courseAccordion">
+              <div class="accordion-body">
+                ASP.NET, MVC, C#, ADO.NET.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading7">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapse7">
+                Latest Technologies
+              </button>
+            </h2>
+            <div id="collapse7" class="accordion-collapse collapse" data-bs-parent="#courseAccordion">
+              <div class="accordion-body">
+                AI/ML Basics, DevOps, GitHub, Cloud Fundamentals.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!--  -->
+  <!-- Career Preparation Support -->
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-8">
+      <div class="glass-box p-4">
+        <h4 class="fw-bold mb-3 text-primary">
+          📘 Career Preparation Support
+        </h4>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item bg-transparent">
+            ✅ <strong>Experts’ guidance on Resume Building</strong> to highlight key achievements
+          </li>
+          <li class="list-group-item bg-transparent">
+            ✅ <strong>LinkedIn Profile Creation & Training</strong> for a professional online presence
+          </li>
+          <li class="list-group-item bg-transparent">
+            ✅ <strong>Web Portfolio Building</strong> to effectively showcase projects & skills
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div><br><br>
+
+ <!-- Footer -->
+<footer class="footer-section">
+  <div class="container">
+    <div class="row gy-4">
+
+      <!-- Contact Us -->
+      <div class="col-lg-3 col-md-6">
+        <h5 class="footer-title">CONTACT US</h5>
+        <div class="footer-line"></div>
+        <p><strong>Phone:</strong> +91 84466 67608</p>
+        <p><strong>Email:</strong> info@aspectskills.com</p>
+      </div>
+
+      <!-- Useful Links -->
+      <div class="col-lg-3 col-md-6">
+        <h5 class="footer-title">USEFUL LINKS</h5>
+        <div class="footer-line"></div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="alliances.html">Alliances</a></li>
+          <li><a href="service.html">Services</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="disclaimer.html">Disclaimer Policy</a></li>
+        </ul>
+      </div>
+
+      <!-- Our Services -->
+      <div class="col-lg-3 col-md-6">
+        <h5 class="footer-title">OUR SERVICES</h5>
+        <div class="footer-line"></div>
+        <ul class="footer-links">
+          <li><a href="service.html">College Training</a></li>
+          <li><a href="service.html">Corporates</a></li>
+          <li><a href="service.html">Consulting</a></li>
+          <li><a href="service.html">Staffing</a></li>
+          <li><a href="service.html">Testing</a></li>
+          <li><a href="service.html">Career Counseling</a></li>
+        </ul>
+      </div>
+
+      <!-- About -->
+      <div class="col-lg-3 col-md-6">
+        <h5 class="footer-title">ABOUT Aspect Skills</h5>
+        <div class="footer-line"></div>
+        <p>
+         The major operations of the company are held in Pune. We believe in providing high quality, cost effective solutions in clients PAN INDIA.
+        </p>
+
+
+        <!-- LinkedIn Icon -->
+        <a href="https://www.linkedin.com/company/aspect-skills/" class="linkedin-icon">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Bottom Line -->
+    <div class="footer-bottom">
+      <p>© 2024-Aspect Skills. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

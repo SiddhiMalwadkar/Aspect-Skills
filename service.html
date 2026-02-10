@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Placements Overview|Aspect Skills</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+   <link rel="stylesheet" href="service.css" />
+</head>
+
+<body>
+
+  <!-- Top Blue Bar -->
+  <div class="top-bar d-flex justify-content-between align-items-center px-3 py-2 bg-primary text-white">
+    <div class="top-bar-left d-flex gap-3 align-items-center">
+      <span><i class="fas fa-phone"></i> +91 84466 67608</span>
+
+      <a href="mailto:info@aspectskills.com " class="text-white" aria-label="Email"><i class="fas fa-envelope"></i> info@aspectskills.com</a>
+    </div>
+    <!-- Enquiry Button -->
+    <div class="text-center">
+      <button class="btn btn-warning px-4 py-2 rounded-pill" data-bs-toggle="modal" data-bs-target="#enquiryModal">
+        Enquire Now
+      </button>
+    </div>
+  </div>
+
+ <!-- Enquiry Modal -->
+<div class="modal fade" id="enquiryModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 bg-transparent">
+      <div class="circle-modal-content">
+
+        <button type="button"
+                class="circle-modal-close"
+                data-bs-dismiss="modal">&times;</button>
+
+        <h4 class="mb-4 fw-bold">Enquire Now</h4>
+
+        <!-- FORM -->
+        <form id="enquiryForm"
+              action="https://formsubmit.co/ajax/info@aspectskills.com"
+              method="POST">
+
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+
+          <input type="text" name="name" placeholder="*Name" required>
+          <input type="tel" name="phone" placeholder="*Phone" required>
+          <input type="email" name="email" placeholder="*Email" required>
+          <input type="text" name="interest" placeholder="*Interested In" required>
+
+          <button type="submit" class="submit-btn mt-2">Submit</button>
+        </form>
+
+        <!-- SUCCESS MESSAGE (INSIDE MODAL) -->
+        <div id="successBox" class="text-center d-none mt-3">
+          <div class="success-circle mb-3">✓</div>
+          <h5 class="fw-bold">Enquiry Submitted Successfully!</h5>
+          <p class="text-muted small">Our team will contact you shortly.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FormSubmit logic -->
+<script>
+document.getElementById("enquiryForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  fetch(this.action, {
+    method: "POST",
+    body: new FormData(this)
+  })
+  .then(() => {
+
+    // Hide form
+    this.classList.add("d-none");
+
+    // Show success message INSIDE modal
+    document.getElementById("successBox").classList.remove("d-none");
+
+    // Optional: auto close after 3 sec
+    setTimeout(() => {
+      const modal = bootstrap.Modal.getInstance(document.getElementById("enquiryModal"));
+      modal.hide();
+
+      // Reset for next open
+      this.reset();
+      this.classList.remove("d-none");
+      document.getElementById("successBox").classList.add("d-none");
+
+    }, 3000);
+  })
+  .catch(() => alert("Something went wrong. Please try again."));
+});
+</script>
+
+  
+  
+  <!-- Main Header -->
+   <header class="main-header py-3 border-bottom bg-white">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="logo" style="display: flex; align-items: center; height: 140px; padding-left: 30px;">
+        <a href="index.html" style="display: inline-block;">
+          <img src="assets/img/as3r.png" alt="aspect skills Logo"
+            style="max-height: 130px; width: auto; object-fit: contain; display: block;" />
+        </a>
+      </div>
+      <nav class="main-nav">
+        <ul class="nav">
+          <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle fw-semibold" href="#" id="coursesDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Courses
+            </a>
+
+            <div class="dropdown-menu mega-dropdown shadow-lg border-0 p-4 mt-2 animate__animated animate__fadeIn"
+              aria-labelledby="coursesDropdown">
+              <div class="container-fluid">
+                <div class="row g-4">
+
+                  <!-- Column 1 -->
+                  <div class="col-md-4">
+                    <h6 class="mega-title">100% Job Assurance</h6>
+                    <a class="mega-link" href="/xpro.html">xPro - Full Stack Dev with AI</a>
+                    <a class="mega-link" href="/testpro.html">testPro - Automation Testing</a>
+
+                    <h6 class="mega-title mt-4">Master Diploma (6 Months)</h6>
+                    <a class="mega-link" href="/javafullstack.html">Java Full Stack</a>
+                    <a class="mega-link" href="/dotnet.html">.Net Full Stack</a>
+                    <a class="mega-link" href="/softwaretesting.html">Software Testing</a>
+                    <a class="mega-link" href="/pdac.html">P-DAC</a>
+                  </div>
+
+                  <!-- Column 2 -->
+                  <div class="col-md-4">
+                    <h6 class="mega-title">Advanced Diploma (4 Months)</h6>
+                    <a class="mega-link" href="/pythonfullstack.html">Python Full Stack</a>
+                    <a class="mega-link" href="/javafullstack.html">Java Full Stack</a>
+                    <a class="mega-link" href="/dotnet.html">Dot Net Full Stack</a>
+
+                    <h6 class="mega-title mt-4">Diploma (2 Months)</h6>
+                    <a class="mega-link" href="/uiuxdesign.html">UI/UX Design</a>
+                    <a class="mega-link" href="/datascience.html">Data Science</a>
+                    <a class="mega-link" href="/php.html">PHP</a>
+                    <a class="mega-link" href="/salesforce.html">Salesforce</a>
+                  </div>
+
+                  <!-- Column 3 -->
+                  <div class="col-md-4">
+                    <h6 class="mega-title">Short Term Courses</h6>
+                    <a class="mega-link" href="/cc.html">C / C++</a>
+                    <a class="mega-link" href="/corejava.html">Core Java</a>
+                    <a class="mega-link" href="/htmlcssbootstrap.html">HTML / CSS / Bootstrap</a>
+                    <a class="mega-link" href="/angularreact.html">Angular / React</a>
+                    <a class="mega-link" href="/aws.html">AWS / DevOps</a>
+                    <a class="mega-link" href="/powerbi.html">Power BI</a>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="/service.html">Services</a></li>
+          <li class="nav-item dropdown position-relative">
+            <a class="nav-link dropdown-toggle fw-semibold" href="#" id="placementsDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Placements
+            </a>
+            <ul class="dropdown-menu placements-dropdown shadow border-0 mt-2 animate__animated animate__fadeIn"
+              aria-labelledby="placementsDropdown">
+              <li><a class="dropdown-item" href="/overview.html">Overview</a></li>
+              <!-- <li><a class="dropdown-item" href="#">Placed Students</a></li> -->
+              <li><a class="dropdown-item" href="/fec.html">Fresher Employment Center</a></li>
+              <li><a class="dropdown-item" href="/our-clients.html">Our Clients</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="/about.html">About Us</a></li>
+          <!-- <li class="nav-item"><a class="nav-link" href="#">Testimonials</a></li> -->
+          <li class="nav-item"><a class="nav-link" href="/contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<!--service  -->
+
+<div class="container py-5">
+  <h2 class="text-center mb-4">Services</h2>
+
+  <!-- Tabs Nav -->
+  <ul class="nav nav-tabs justify-content-center mb-4" id="servicesTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="college-tab" data-bs-toggle="tab" data-bs-target="#college" type="button"
+        role="tab" aria-controls="college" aria-selected="true">🎓College</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="corporate-tab" data-bs-toggle="tab" data-bs-target="#corporate" type="button"
+        role="tab" aria-controls="corporate" aria-selected="false">🏢Corporate</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="consulting-tab" data-bs-toggle="tab" data-bs-target="#consulting" type="button"
+        role="tab" aria-controls="consulting" aria-selected="false">💼Consulting</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="staffing-tab" data-bs-toggle="tab" data-bs-target="#staffing" type="button"
+        role="tab" aria-controls="staffing" aria-selected="false">👥Staffing</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="testing-tab" data-bs-toggle="tab" data-bs-target="#testing" type="button" role="tab"
+        aria-controls="testing" aria-selected="false">🧪Testing</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="counseling-tab" data-bs-toggle="tab" data-bs-target="#counseling" type="button"
+        role="tab" aria-controls="counseling" aria-selected="false">
+        🧭 Career Counseling
+      </button>
+    </li>
+
+  </ul>
+
+  <!-- Tab Content -->
+  <div class="tab-content tab-content-box" id="servicesTabContent">
+    <div class="tab-pane fade show active" id="college" role="tabpanel" aria-labelledby="college-tab">
+      <div class="tab-text">
+        <p class="tab-heading">Technology Training for Colleges</p>
+
+        <p>Our Institutional Training Division focuses on delivering skill-based training — both technical and soft
+          skills — to colleges and universities across India. In today’s fast-evolving IT landscape, curriculum-based
+          teaching alone is not enough. That’s where we step in — partnering with academic institutions to equip
+          students with real-world, job-ready skills.</p>
+
+        <p>We bridge the gap between students and industries, offering valuable placement support and making
+          students industry-ready with relevant, updated training.</p>
+
+        <p class="fw-bold mt-4">Our Key Programs for Colleges:</p>
+        <ul class="tab-list">
+          <li> Focused training in emerging IT domains to ensure job readiness.</li>
+          <li> Soft skills, interview techniques & personality development workshops.</li>
+          <li> Campus placement services across India via active industry tie-ups.</li>
+          <li>Support for on-campus recruitment through reputed companies.</li>
+          <li> Customized training modules aligned with company-specific roles.</li>
+          <li> Live industry expert sessions offering insights into corporate culture.</li>
+        </ul>
+      </div>
+    </div>
+
+
+    <!-- Additional tabs content here if needed -->
+    <div class="tab-pane fade" id="corporate" role="tabpanel" aria-labelledby="corporate-tab">
+      <div class="tab-text">
+        <p class="tab-heading"> Corporate Training & Workshops</p>
+
+        <p><strong>PEOPLE / CUSTOMERS</strong></p>
+        <p>Customer satisfaction is at the heart of our training process. It's said that it costs five times more to
+          attract a new customer than to retain an existing one. For us, loyal customers sit at the top rung of our
+          success ladder.</p>
+
+        <ul class="tab-list">
+          <li>Continuous improvement is our commitment.</li>
+          <li>Primary focus on service — always.</li>
+          <li>We tirelessly ensure best-in-class service at every touchpoint.</li>
+          <li>Our operational model revolves entirely around customer needs.</li>
+        </ul>
+
+        <p class="fw-bold mt-4">💡 What We Do?</p>
+        <p>Corporate Training & Workshops Vertical is dedicated to catering to corporate houses. Our approach
+          ensures efficiency, cost-effectiveness, and minimal disruption.</p>
+
+        <ul class="tab-list">
+          <li>Tailored training programs focused on Knowledge, Skills, Tools & Techniques.</li>
+          <li>Flexible scheduling aligned with your timelines and budget.</li>
+          <li>Performance-centric programs that increase workforce productivity and effectiveness.</li>
+          <li>Return-on-investment-driven training strategy.</li>
+          <li>Competency gap analysis and strategic development planning.</li>
+        </ul>
+
+        <p class="fw-bold mt-4">🚀 Our Offerings:</p>
+        <ul class="tab-list">
+          <li><strong>Induction/Entry-Level Training:</strong> Equip new hires quickly to become productive
+            contributors.</li>
+          <li><strong>Experienced Staff Upskilling:</strong> Customized technical training based on Training Need
+            Analysis (TNA).</li>
+          <li><strong>Niche Technology Programs:</strong> Targeted skill-building in emerging tech areas.</li>
+          <li><strong>Open House Workshops:</strong> Collaborative sessions led by seasoned industry experts.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="consulting" role="tabpanel" aria-labelledby="consulting-tab">
+      <div class="tab-text">
+        <p class="tab-heading">IT Consulting & Strategic Solutions</p>
+
+        <p>Our <strong>IT Consulting Services</strong> are crafted to guide organizations through complex technology
+          challenges with confidence. We help companies enhance their processes, modernize infrastructure, and embrace
+          digital transformation with strategic expertise and actionable insights.</p>
+
+        <p>Whether you're a startup or an enterprise, our consulting team works closely with you to create custom
+          solutions that align with your business goals and deliver measurable impact.</p>
+
+        <p class="fw-bold mt-4">📌 Core Consulting Focus Areas:</p>
+        <ul class="tab-list">
+          <li>In-depth IT Assessments & audits to evaluate current systems and performance.</li>
+          <li>Digital Transformation planning tailored to your business objectives.</li>
+          <li>Guidance on cybersecurity, compliance, and risk mitigation strategies.</li>
+          <li>Implementation of scalable and robust cloud-based architectures.</li>
+          <li>Business Process Optimization using cutting-edge technologies.</li>
+          <li>Collaborative consulting with hands-on involvement and executive reporting.</li>
+        </ul>
+
+        <p class="mt-4">With a consultative approach and deep domain expertise, we ensure your technology becomes a
+          strategic asset — not just a tool.</p>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="staffing" role="tabpanel" aria-labelledby="staffing-tab">
+      <div class="tab-text">
+        <p class="tab-heading">Talent Acquisition & Staffing Solutions</p>
+
+        <p>We specialize in providing end-to-end <strong>Staffing Solutions</strong> for organizations of all sizes and
+          across industries. Our approach focuses on connecting skilled professionals with the right roles, helping
+          companies build high-performance teams that drive results.</p>
+
+        <p>Whether you need short-term project-based staffing, contract-to-hire, or permanent placement, we ensure
+          seamless hiring backed by thorough screening, technology alignment, and cultural fitment.</p>
+
+        <p class="fw-bold mt-4">📌 Our Staffing Services Include:</p>
+        <ul class="tab-list">
+          <li>📋 Customized recruitment strategies tailored to specific job roles.</li>
+          <li>🔎 Comprehensive screening and technical assessment of candidates.</li>
+          <li>⚡ Quick turnaround and deployment of skilled professionals.</li>
+          <li>🧑‍💻 IT, Non-IT, Technical, and Functional staffing support.</li>
+          <li>🌐 PAN-India presence to support location-specific hiring needs.</li>
+          <li>💼 Onboarding support and performance tracking.</li>
+        </ul>
+
+        <p class="mt-4">We don’t just fill roles — we build careers and strengthen teams with reliable, scalable, and
+          responsive staffing services.</p>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="testing" role="tabpanel" aria-labelledby="testing-tab">
+      <div class="tab-text">
+        <p class="tab-heading">Software Testing & Quality Assurance</p>
+
+        <p>At Aspect Skills, we offer reliable and scalable <strong>Software Testing and Quality Assurance
+            (QA)</strong> services to ensure product excellence. In a fast-paced digital world, quality is not an option
+          — it’s a necessity.</p>
+
+        <p>Our QA team works closely with development teams to identify bugs early, reduce time-to-market, and ensure a
+          seamless user experience across platforms and devices.</p>
+
+        <p class="fw-bold mt-4">Key Testing Services We Offer:</p>
+        <ul class="tab-list">
+          <li>🔍 Manual Testing for real-world user scenarios and edge cases.</li>
+          <li>⚙️ Automation Testing using modern frameworks like Selenium, Appium, etc.</li>
+          <li>📱 Mobile App Testing (iOS & Android) for performance, compatibility, and usability.</li>
+          <li>🌐 Web Application Testing to ensure responsiveness, speed, and security.</li>
+          <li>🛡️ Security & Penetration Testing for vulnerability detection.</li>
+          <li>📈 Performance Testing to measure scalability under load.</li>
+        </ul>
+
+        <p class="mt-4">From startups to enterprises, we help businesses release <strong>bug-free, high-quality
+            software</strong> on time — every time.</p>
+      </div>
+    </div>
+
+    <div class="tab-pane fade" id="counseling" role="tabpanel" aria-labelledby="counseling-tab">
+      <div class="tab-text">
+        <p class="tab-heading">Career Counseling Services</p>
+        <p>Our career counseling program is designed to guide students toward a clear and achievable career path.
+          Through expert sessions, aptitude analysis, and industry mentoring, we empower students to make informed
+          career decisions.</p>
+
+        <ul class="tab-list">
+          <li>One-on-one counseling sessions with industry experts</li>
+          <li>Aptitude and interest-based assessments</li>
+          <li>Guidance on career pathways across different IT domains</li>
+          <li>Support with resume building and personal branding</li>
+          <li>Insight into current industry hiring trends</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+ <!-- Footer -->
+<footer class="footer-section">
+  <div class="container">
+    <div class="row gy-4">
+
+      <!-- Contact Us -->
+      <div class="col-lg-3 col-md-6">
+        <h5 class="footer-title">CONTACT US</h5>
+        <div class="footer-line"></div>
+        <p><strong>Phone:</strong> +91 84466 67608</p>
+        <p><strong>Email:</strong> info@aspectskills.com</p>
+      </div>
+
+      <!-- Useful Links -->
+      <div class="col-lg-3 col-md-6">
+        <h5 class="footer-title">USEFUL LINKS</h5>
+        <div class="footer-line"></div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="alliances.html">Alliances</a></li>
+          <li><a href="service.html">Services</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="disclaimer.html">Disclaimer Policy</a></li>
+        </ul>
+      </div>
+
+      <!-- Our Services -->
+      <div class="col-lg-3 col-md-6">
+        <h5 class="footer-title">OUR SERVICES</h5>
+        <div class="footer-line"></div>
+        <ul class="footer-links">
+          <li><a href="service.html">College Training</a></li>
+          <li><a href="service.html">Corporates</a></li>
+          <li><a href="service.html">Consulting</a></li>
+          <li><a href="service.html">Staffing</a></li>
+          <li><a href="service.html">Testing</a></li>
+          <li><a href="service.html">Career Counseling</a></li>
+        </ul>
+      </div>
+
+      <!-- About -->
+      <div class="col-lg-3 col-md-6">
+        <h5 class="footer-title">ABOUT Aspect Skills</h5>
+        <div class="footer-line"></div>
+        <p>
+         The major operations of the company are held in Pune. We believe in providing high quality, cost effective solutions in clients PAN INDIA.
+        </p>
+
+
+        <!-- LinkedIn Icon -->
+        <a href="https://www.linkedin.com/company/aspect-skills/" class="linkedin-icon">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Bottom Line -->
+    <div class="footer-bottom">
+      <p>© 2024-Aspect Skills. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us|Aspect Skills</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+   <link rel="stylesheet" href="about.css" />
+</head>
+
+<body>
+
+  <!-- Top Blue Bar -->
+  <div class="top-bar d-flex justify-content-between align-items-center px-3 py-2 bg-primary text-white">
+    <div class="top-bar-left d-flex gap-3 align-items-center">
+      <span><i class="fas fa-phone"></i> +91 84466 67608</span>
+
+      <a href="mailto:info@aspectskills.com " class="text-white" aria-label="Email"><i class="fas fa-envelope"></i> info@aspectskills.com</a>
+    </div>
+    <!-- Enquiry Button -->
+    <div class="text-center">
+      <button class="btn btn-warning px-4 py-2 rounded-pill" data-bs-toggle="modal" data-bs-target="#enquiryModal">
+        Enquire Now
+      </button>
+    </div>
+  </div>
+
+<!-- Enquiry Modal -->
+<div class="modal fade" id="enquiryModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 bg-transparent">
+      <div class="circle-modal-content">
+
+        <button type="button"
+                class="circle-modal-close"
+                data-bs-dismiss="modal">&times;</button>
+
+        <h4 class="mb-4 fw-bold">Enquire Now</h4>
+
+        <!-- FORM -->
+        <form id="enquiryForm"
+              action="https://formsubmit.co/ajax/info@aspectskills.com"
+              method="POST">
+
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+
+          <input type="text" name="name" placeholder="*Name" required>
+          <input type="tel" name="phone" placeholder="*Phone" required>
+          <input type="email" name="email" placeholder="*Email" required>
+          <input type="text" name="interest" placeholder="*Interested In" required>
+
+          <button type="submit" class="submit-btn mt-2">Submit</button>
+        </form>
+
+        <!-- SUCCESS MESSAGE (INSIDE MODAL) -->
+        <div id="successBox" class="text-center d-none mt-3">
+          <div class="success-circle mb-3">✓</div>
+          <h5 class="fw-bold">Enquiry Submitted Successfully!</h5>
+          <p class="text-muted small">Our team will contact you shortly.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- FormSubmit logic -->
+<script>
+document.getElementById("enquiryForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  fetch(this.action, {
+    method: "POST",
+    body: new FormData(this)
+  })
+  .then(() => {
+
+    // Hide form
+    this.classList.add("d-none");
+
+    // Show success message INSIDE modal
+    document.getElementById("successBox").classList.remove("d-none");
+
+    // Optional: auto close after 3 sec
+    setTimeout(() => {
+      const modal = bootstrap.Modal.getInstance(document.getElementById("enquiryModal"));
+      modal.hide();
+
+      // Reset for next open
+      this.reset();
+      this.classList.remove("d-none");
+      document.getElementById("successBox").classList.add("d-none");
+
+    }, 3000);
+  })
+  .catch(() => alert("Something went wrong. Please try again."));
+});
+</script>
+  
+  
+  <!-- Main Header -->
+   <header class="main-header py-3 border-bottom bg-white">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="logo" style="display: flex; align-items: center; height: 140px; padding-left: 30px;">
+        <a href="index.html" style="display: inline-block;">
+          <img src="assets/img/as3r.png" alt="aspect skills Logo"
+            style="max-height: 130px; width: auto; object-fit: contain; display: block;" />
+        </a>
+      </div>
+      <nav class="main-nav">
+        <ul class="nav">
+          <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle fw-semibold" href="#" id="coursesDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Courses
+            </a>
+
+            <div class="dropdown-menu mega-dropdown shadow-lg border-0 p-4 mt-2 animate__animated animate__fadeIn"
+              aria-labelledby="coursesDropdown">
+              <div class="container-fluid">
+                <div class="row g-4">
+
+                  <!-- Column 1 -->
+                  <div class="col-md-4">
+                    <h6 class="mega-title">100% Job Assurance</h6>
+                    <a class="mega-link" href="/xpro.html">xPro - Full Stack Dev with AI</a>
+                    <a class="mega-link" href="/testpro.html">testPro - Automation Testing</a>
+
+                    <h6 class="mega-title mt-4">Master Diploma (6 Months)</h6>
+                    <a class="mega-link" href="/javafullstack.html">Java Full Stack</a>
+                    <a class="mega-link" href="/dotnet.html">.Net Full Stack</a>
+                    <a class="mega-link" href="/softwaretesting.html">Software Testing</a>
+                    <a class="mega-link" href="/pdac.html">P-DAC</a>
+                  </div>
+
+                  <!-- Column 2 -->
+                  <div class="col-md-4">
+                    <h6 class="mega-title">Advanced Diploma (4 Months)</h6>
+                    <a class="mega-link" href="/pythonfullstack.html">Python Full Stack</a>
+                    <a class="mega-link" href="/javafullstack.html">Java Full Stack</a>
+                    <a class="mega-link" href="/dotnet.html">Dot Net Full Stack</a>
+
+                    <h6 class="mega-title mt-4">Diploma (2 Months)</h6>
+                    <a class="mega-link" href="/uiuxdesign.html">UI/UX Design</a>
+                    <a class="mega-link" href="/datascience.html">Data Science</a>
+                    <a class="mega-link" href="/php.html">PHP</a>
+                    <a class="mega-link" href="/salesforce.html">Salesforce</a>
+                  </div>
+
+                  <!-- Column 3 -->
+                  <div class="col-md-4">
+                    <h6 class="mega-title">Short Term Courses</h6>
+                    <a class="mega-link" href="/cc.html">C / C++</a>
+                    <a class="mega-link" href="/corejava.html">Core Java</a>
+                    <a class="mega-link" href="/htmlcssbootstrap.html">HTML / CSS / Bootstrap</a>
+                    <a class="mega-link" href="/angularreact.html">Angular / React</a>
+                    <a class="mega-link" href="/aws.html">AWS / DevOps</a>
+                    <a class="mega-link" href="/powerbi.html">Power BI</a>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="/service.html">Services</a></li>
+          <li class="nav-item dropdown position-relative">
+            <a class="nav-link dropdown-toggle fw-semibold" href="#" id="placementsDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Placements
+            </a>
+            <ul class="dropdown-menu placements-dropdown shadow border-0 mt-2 animate__animated animate__fadeIn"
+              aria-labelledby="placementsDropdown">
+              <li><a class="dropdown-item" href="/overview.html">Overview</a></li>
+              <!-- <li><a class="dropdown-item" href="#">Placed Students</a></li> -->
+              <li><a class="dropdown-item" href="/fec.html">Fresher Employment Center</a></li>
+              <li><a class="dropdown-item" href="/our-clients.html">Our Clients</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="/about.html">About Us</a></li>
+          <!-- <li class="nav-item"><a class="nav-link" href="#">Testimonials</a></li> -->
+          <li class="nav-item"><a class="nav-link" href="/contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header> 
+
+
+
+  <!-- About -->
+  <section class="about-section container py-5">
+    <div class="text-center mb-5">
+      <h2 class="section-title">About <span class="highlight">Aspect Skills</span></h2>
+      <p class="section-subtitle">Empowering Talent, Bridging Industry & Academia</p>
+    </div>
+
+    <div class="about-content">
+      <p>Aspect Skills Aspect Skills provides services in the area of <strong>IT Training, Consulting, Staffing</strong>, and more. Our
+        institute is driven by a clear agenda — to equip students with the right mix of strong fundamentals and modern
+        tools that improve their <strong>Employability Quotient</strong>.</p>
+
+      <p>With a constantly evolving IT industry, we strive to bridge the knowledge gap by offering up-to-date,
+        industry-relevant training. Our mission aligns with building academic partnerships and corporate alliances that
+        make students job-ready, faster and smarter.</p>
+
+      <p>We believe in <strong>customized learning experiences</strong> and validated training programs that serve both
+        freshers and professionals alike, all delivered by a team of experienced, well-informed, and industry-ready
+        faculty members.</p>
+    </div>
+    <!-- new about -->
+    <!-- Why iTpreneur -->
+    <section class="why-itpreneur-section container py-5">
+      <div class="text-center mb-5">
+        <h2 class="section-title">Why <span class="highlight">Aspect Skills</span>?</h2>
+        <p class="section-subtitle">Get ahead by signing up for our courses today 🚀</p>
+      </div>
+
+      <div class="glass-card mb-4 p-4">
+        <p>
+          <strong>Aspect Skills</strong> is committed to helping IT students reach their goals, personalizing their learning
+          journey, and achieving their dream job by offering an innovative, industry-aligned environment.
+        </p>
+        <p>
+          We're one of Pune’s top IT training institutes focused on <strong>Job-Oriented Training, Talent Management,
+            Campus Recruitment, and Contract Staffing</strong>.
+        </p>
+        <p>
+          We conduct <strong>Campus to Corporate</strong> programs, live project training, and in-house sessions to
+          bridge the gap between college education and real-world skills.
+        </p>
+        <p>
+          Our aim is to empower students to compete globally with practical knowledge, modern skills, and professional
+          grooming.
+        </p>
+
+        <div class="text-center mt-4">
+          <a href="/contact.html" class="btn btn-primary btn-lg">🎓 Join Now</a>
+        </div>
+      </div>
+
+      <div class="container my-5">
+        <div class="glass-box p-4 rounded-4 shadow-lg text-dark">
+          <h4 class="text-center mb-4 fw-bold">🌟 Why Choose Us?</h4>
+          <div class="row text-center gy-4">
+            <div class="col-6 col-lg-3">
+              <div class="box">
+                <h5 class="box-heading">Innovative</h5>
+                <p class="box-content">We push learning beyond the edge using the latest tech and industry trends.</p>
+              </div>
+            </div>
+            <div class="col-6 col-lg-3">
+              <div class="box">
+                <h5 class="box-heading">Experienced</h5>
+                <p class="box-content">Industry experts with real-world skills deliver quality training.</p>
+              </div>
+            </div>
+            <div class="col-6 col-lg-3">
+              <div class="box">
+                <h5 class="box-heading">Professional</h5>
+                <p class="box-content">We maintain high standards in training and conduct.</p>
+              </div>
+            </div>
+            <div class="col-6 col-lg-3">
+              <div class="box">
+                <h5 class="box-heading">Trusted</h5>
+                <p class="box-content">Transparency, reliability, and trust form our foundation.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- Counters -->
+      <!-- Counter Section with Title -->
+      <section class="my-5 text-center">
+        <div class="container">
+          <h2 class="display-5 fw-bold mb-3">🌟 Our Impact in Numbers</h2>
+          <p class="text-muted mb-5">We are proud of the milestones we've achieved over the years</p>
+
+          <div class="row gy-4">
+            <div class="col-md-4">
+              <div class="counter-box glass-card p-4">
+                <h2 class="counter display-4 fw-bold" data-target="4000">4000+</h2>
+                <p class="counter-label text-muted">🎓 Students Trained</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="counter-box glass-card p-4">
+                <h2 class="counter display-4 fw-bold" data-target="200">200+</h2>
+                <p class="counter-label text-muted">🤝 Hiring Partners</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="counter-box glass-card p-4">
+                <h2 class="counter display-4 fw-bold" data-target="10">10+</h2>
+                <p class="counter-label text-muted">🏆 Years of Excellence</p>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+
+      </section>
+
+    </section>
+    
+
+    <!--  -->
+    <section class="about-hero">
+      <div class="glass-card">
+        <h1>Training for a New Age Career 💼</h1>
+        <h2>Helping You Create a Better Tomorrow 🌟</h2>
+        <p>
+          <strong>Aspect Skills</strong> is one of the <strong>Best IT Training Institutes in Pune</strong>,
+          dedicated to introducing new skills and talent into Pune’s IT sector.
+          We are a proudly unique company with services covering all levels of IT
+          recruitment and skill development.
+        </p>
+        <p>
+          Since 2014, we've helped over <strong>4000 people</strong> launch their careers in Tech and
+          Digital industries, and supported their growth through our integrated training
+          and recruitment services.
+        </p>
+        <p>
+          Across all our services, our mission is simple: <strong>To Make IT Happen</strong> – for the
+          benefit of our candidates, our clients, and the ever-growing IT sector in Pune.
+        </p>
+      </div>
+    </section>
+
+    <!-- Vision Section -->
+    <div class="about-box glass-box mt-5">
+      <h4 class="box-heading"><span class="emoji">🎯</span> Our Vision</h4>
+      <ul class="box-content vision-list">
+        <li><i class="fas fa-bullseye text-primary"></i> A vision without action is just a dream.</li>
+        <li><i class="fas fa-user-graduate text-success"></i> To inspire all students by equipping them with the
+          knowledge to achieve their dream jobs.</li>
+        <li><i class="fas fa-award text-warning"></i> To become the world’s most respected institute brand through
+          relentless dedication.</li>
+        <li><i class="fas fa-book-reader text-info"></i> To provide education that transforms students through rigorous
+          coursework and industry-relevant skills.</li>
+        <li><i class="fas fa-users-cog text-danger"></i> To empower our team with clarity, focus, and shared purpose for
+          continuous growth.</li>
+        <li><i class="fas fa-briefcase text-secondary"></i> To ensure every student in the nation has a chance at their
+          dream job.</li>
+        <li><i class="fas fa-chart-line text-success"></i> To drive a new era of innovation, development, and
+          productivity.</li>
+        <li><i class="fas fa-globe-asia text-primary"></i> To deliver top-tier IT services across India and beyond.</li>
+      </ul>
+    </div>
+
+
+    <!-- Mission Section -->
+    <div class="about-box glass-box mt-4">
+      <h4 class="box-heading"><span class="emoji">🚀</span> Our Mission</h4>
+      <div class="mission-content">
+        <i class="fas fa-rocket launch-icon"></i>
+        <p>
+          "To create a <strong>Centre of Excellence</strong> for imparting <strong>Professional Education</strong> &
+          <strong>Practical Training</strong>
+          in Information Technologies through <strong>Efficient Management</strong> and <strong>Expert Faculty</strong>
+          by way of
+          enlarging the knowledge base, elevating proficiency, enriching experience, and enhancing employment
+          opportunities for our customers."
+        </p>
+      </div>
+    </div>
+
+
+
+    <!-- Values Section -->
+    <div class="about-box glass-box mt-4">
+      <h4 class="box-heading"><span class="emoji">💡</span> Our Core Values</h4>
+      <ul class="box-content values-list">
+        <li><i class="fas fa-shield-alt text-danger"></i> <strong>Integrity</strong> – Acting with honesty and strong
+          ethical principles.</li>
+        <li><i class="fas fa-lightbulb text-warning"></i> <strong>Innovation</strong> – Encouraging creativity and
+          embracing new ideas.</li>
+        <li><i class="fas fa-handshake text-primary"></i> <strong>Collaboration</strong> – Working together for shared
+          success.</li>
+        <li><i class="fas fa-award text-success"></i> <strong>Excellence</strong> – Striving for the highest standards
+          in everything we do.</li>
+        <li><i class="fas fa-user-check text-info"></i> <strong>Customer Commitment</strong> – Dedicated to empowering
+          customer success.</li>
+      </ul>
+    </div>
+
+  </section>
+ <!-- Footer -->
+<footer class="footer-section">
+  <div class="container">
+    <div class="row gy-4">
+
+      <!-- Contact Us -->
+      <div class="col-lg-3 col-md-6">
+        <h5 class="footer-title">CONTACT US</h5>
+        <div class="footer-line"></div>
+        <p><strong>Phone:</strong> +91 84466 67608</p>
+        <p><strong>Email:</strong> info@aspectskills.com</p>
+      </div>
+
+      <!-- Useful Links -->
+      <!-- Useful Links -->
+      <div class="col-lg-3 col-md-6">
+        <h5 class="footer-title">USEFUL LINKS</h5>
+        <div class="footer-line"></div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="alliances.html">Alliances</a></li>
+          <li><a href="service.html">Services</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="disclaimer.html">Disclaimer Policy</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <h5 class="footer-title">OUR SERVICES</h5>
+        <div class="footer-line"></div>
+        <ul class="footer-links">
+          <li><a href="service.html">College Training</a></li>
+          <li><a href="service.html">Corporates</a></li>
+          <li><a href="service.html">Consulting</a></li>
+          <li><a href="service.html">Staffing</a></li>
+          <li><a href="service.html">Testing</a></li>
+          <li><a href="service.html">Career Counseling</a></li>
+        </ul>
+      </div>
+      <!-- About -->
+      <div class="col-lg-3 col-md-6">
+        <h5 class="footer-title">ABOUT Aspect Skills</h5>
+        <div class="footer-line"></div>
+        <p>
+         The major operations of the company are held in Pune. We believe in providing high quality, cost effective solutions in clients PAN INDIA.
+        </p>
+
+
+        <!-- LinkedIn Icon -->
+        <a href="#" class="linkedin-icon">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Bottom Line -->
+    <div class="footer-bottom">
+      <p>© 2024-Aspect Skills. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+<script>
+          document.addEventListener("DOMContentLoaded", () => {
+            const counters = document.querySelectorAll(".counter");
+
+            counters.forEach(counter => {
+              counter.innerText = "0";
+              const updateCounter = () => {
+                const target = +counter.getAttribute("data-target");
+                const count = +counter.innerText;
+                const increment = Math.ceil(target / 100);
+
+                if (count < target) {
+                  counter.innerText = count + increment > target ? target : count + increment;
+                  setTimeout(updateCounter, 20);
+                } else {
+                  counter.innerText = target;
+                }
+              };
+
+              updateCounter();
+            });
+          });
+           const counters = document.querySelectorAll('.counter');
+      counters.forEach(counter => {
+        const updateCount = () => {
+          const target = +counter.getAttribute('data-target');
+          const count = +counter.innerText;
+          const increment = target / 100;
+
+          if (count < target) {
+            counter.innerText = Math.ceil(count + increment);
+            setTimeout(updateCount, 20);
+          } else {
+            counter.innerText = target;
+          }
+        };
+        updateCount();
+      });
+        </script>
+</html>
