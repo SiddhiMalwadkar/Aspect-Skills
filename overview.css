@@ -838,3 +838,12 @@ body {
     margin: 10px auto 0;
   }
 }
+
+/* ===== LOGO SIZE CONTROL ===== */
+.main-logo {
+  height: 175px;      /* Increase this value as needed */
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
